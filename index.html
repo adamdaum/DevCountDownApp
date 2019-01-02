@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="site.css">
+    <title>Countdown App!!!</title>
+</head>
+
+<body>
+
+    <div class="nav-bar"></div>
+
+    <div id="app">
+
+        <div class="centered">
+
+            <section v-if="errored">
+                <p>We're sorry, we're not able to retrieve the event and time data at the moment, please try back later</p>
+            </section>
+
+            <section v-else>
+
+                <div v-if="loading">Loading...</div>
+                <div v-else>
+                    <h2>Count Down To:</h2>
+                    <p>{{info.name._}} </p>
+                    <input v-model="info.name._"> <button v-on:click="saveEvent">Save Event</button></input>
+
+                    <p> Date of: {{info.name._}} </p>
+
+                    <vuejs-datepicker v-model="info.time._" :inline="false" :format="customFormatter"></vuejs-datepicker>
+                    <button v-on:click="saveDate">Save Date</button>
+
+                    <p></p>
+                    <countdown-clock :eventtime="info.time._"></countdown-clock>
+                </div>
+
+                <div v-if="saving">Saving some rad stuff...</div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://unpkg.com/vuejs-datepicker"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="home-index.js"></script>
+    <script>
+     
+
+        var countdown = new Vue({
+            el: '#app',
+            components: {
+                vuejsDatepicker
+            },
+            data: {
+                info: null,
+                loading: true,
+                errored: false,
+                saving: false,
+                startdate: moment().add(1, 'month').format()
+
+            },
+            methods: {
+                customFormatter(date) {
+                    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+                },
+                saveEvent: function () {
+                    this.saving = true
+                    axios({
+                            method: 'post',
+                            url: 'https://devcountdownapp.azurewebsites.net/api/event',
+                            data: {
+                                "id": 1,
+                                "name": this.info.name._,
+                                "time": this.info.time._
+                            },
+                            headers: {
+                                'x-functions-key': 'QgQsW8NwRfP8ATf42HaKtH3hJPt6NJ4jiKa/a7Cn6ZVSHP4Af/joEw=='
+                            }
+                        })
+                        .then((response) => {
+                            console.log(response);
+                            //this.info = response.data
+                            //this.startdate = moment(this.info.time._);
+
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                            this.errored = true
+                        })
+                        .finally(() => this.saving = false)
+                },
+                saveDate: function () {
+                    this.saving = true
+                    axios({
+                            method: 'post',
+                            url: 'https://devcountdownapp.azurewebsites.net/api/event',
+                            data: {
+                                "id": 1,
+                                "name": this.info.name._,
+                                "time": this.info.time._
+                            },
+                            headers: {
+                                'x-functions-key': 'QgQsW8NwRfP8ATf42HaKtH3hJPt6NJ4jiKa/a7Cn6ZVSHP4Af/joEw=='
+                            }
+                        })
+                        .then((response) => {
+                            console.log(response);
+                            // this.info = response.data
+
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                            this.errored = true
+                        })
+                        .finally(() => this.saving = false)
+                }
+            },
+            mounted() {
+
+                axios
+                    .get('https://devcountdownapp.azurewebsites.net/api/event?eventid=1', {
+                        headers: {
+                            'x-functions-key': 'QgQsW8NwRfP8ATf42HaKtH3hJPt6NJ4jiKa/a7Cn6ZVSHP4Af/joEw=='
+                        }
+                    })
+                    .then((response) => {
+                        this.info = response.data;
+                        this.startdate = moment(this.info.time._);
+                        console.log(response);
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                        this.errored = true
+                    })
+                    .finally(() => this.loading = false)
+            }
+
+        })
+    </script>
+</body>
+
+</html>
