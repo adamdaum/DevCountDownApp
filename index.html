@@ -25,8 +25,7 @@
 
                 <div v-if="loading">Loading...</div>
                 <div v-else>
-                    <h2>Count Down To:</h2>
-                    <p>{{info.name._}} </p>
+                    <h2>Count Down To: {{info.name._}} </h2>
                     <input v-model="info.name._"> <button v-on:click="saveEvent">Save Event</button></input>
 
                     <p> Date of: {{info.name._}} </p>
