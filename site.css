@@ -1,58 +1,96 @@
 body {
-    /* font-family: tahoma;
+  /* font-family: tahoma;
     color:#282828;
     margin: 0px;
     /* text-align: -webkit-center; */
-    text-align: center;
-    /* background-color: #16C0B0;  */
-  }
-  
-  .nav-bar {
-    /* background: linear-gradient(-90deg, #222222, #16C0B0);
+  text-align: center;
+  /* background-color: #16C0B0;  */
+}
+
+.nav-bar {
+  /* background: linear-gradient(-90deg, #222222, #16C0B0);
     height: 60px;
     margin-bottom: 15px; */
-  }
+}
 
-  .centered {
-    display: inline-block;
-  }
+.centered {
+  /* display: inline-block; */
+}
 
-  .vdp-datepicker {
-    position: relative;
-    text-align: center !important;
-  }
-    
-  input {
-    /* width: 50%;  
+.vdp-datepicker {
+  position: relative;
+  text-align: center !important;
+}
+
+input {
+  /* width: 50%;  
     height: 25px;
     margin-bottom: 20px; */
+}
+
+#clockdiv {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv>div {
+  padding: 10px;
+  border-radius: 3px;
+  background: #00BF96;
+  display: inline-block;
+}
+
+#clockdiv div>span {
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816A;
+  display: inline-block;
+}
+
+.smalltext {
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.form-control {
+
+  /* display: block; */
+  width: 90%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+}
+
+input {
+  max-width: 400px;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+  .smalltext {
+    font-size: 8px;
   }
 
-  #clockdiv{
-    font-family: sans-serif;
-    color: #fff;
-    display: inline-block;
-    font-weight: 100;
-    text-align: center;
-    font-size: 30px;
+  #clockdiv {
+
+    font-size: 14px;
   }
-  
-  #clockdiv > div{
-    padding: 10px;
-    border-radius: 3px;
-    background: #00BF96;
-    display: inline-block;
+
+  .main-text {
+
+    font-size:16px;
   }
-  
-  #clockdiv div > span{
-    padding: 15px;
-    border-radius: 3px;
-    background: #00816A;
-    display: inline-block;
-  }
-  
-  .smalltext{
-    padding-top: 5px;
-    font-size: 16px;
-  }
-  
+
+}
