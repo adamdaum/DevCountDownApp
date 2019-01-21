@@ -27,50 +27,73 @@
                 <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
                 <v-toolbar-title>Dev Countdown App</v-toolbar-title>
             </v-toolbar>
-            <v-content>
-                <v-container>
-                    <div class="centered">
 
-                        <section v-if="errored">
-                            <p>We're sorry, we're not able to retrieve the event and time data at the moment, please
-                                try back later</p>
-                        </section>
+            <div class="sky">
 
-                        <section v-else>
+                <div class="title">
 
-                            <div v-if="loading">Loading...</div>
-                            <div v-else>
-                                 <!-- <h3> First CI/CD Pipeline commit </h3> -->
+                    <div v-if="loading">Loading...</div>
+
+                    <section v-if="errored">
+                        <p>We're sorry, we're not able to retrieve the event and time data at the moment,
+                            please
+                            try back later
+                        </p>
+                    </section>
+                    <section v-else>
+            
+                                <!-- <h3> First CI/CD Pipeline commit </h3> -->
                                 <h1 class="mb-4 ma-4 main-text">Count Down To: {{info.name._}} </h2>
-                                <div v-if="editing"><input v-model="info.name._" class="mb-4 form-control"></input></div>
-
-                                <!-- <p> Date of: {{info.name._}} </p> -->
-
-                                <datetime type="datetime" v-model="info.time._" use12-hour></datetime>
-
-
-                                <p></p>
-                                <countdown-clock :eventtime="info.time._"></countdown-clock>
-                                <p></p>
-                                
-                                <div v-if="editing"><v-btn color="success" v-on:click="saveEvent">Save Event</v-btn></div>
-                                <div v-else><v-btn color="info" v-on:click="editEvent">Edit Event</v-btn></div>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <div v-if="saving">Saving some rad stuff...</div>
-
-                            </div>
-
-
-
+                                    <div v-if="editing" class="event-name-input-container"><input v-model="info.name._" class="mb-4 form-control"></input></div>
+            
+            
+                                    <datetime type="datetime" v-model="info.time._" use12-hour></datetime>
+            
+            
+                                    <p></p>
+                                    <div v-if="expired" class="expired">Expired</div>
+                                    <div v-else>
+                                        <countdown-clock :eventtime="info.time._" v-on:expired="expired=true"></countdown-clock>
+                                    </div>
+            
+            
+                                    <p></p>
+            
+            
+                                    <div v-if="editing" class="button-container">
+                                        <v-btn color="success" v-on:click="saveEvent">Save Event</v-btn>
+                                    </div>
+                                    <div v-else class="button-container">
+                                        <v-btn color="info" v-on:click="editEvent">Edit Event</v-btn>
+                                    </div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <div v-if="saving" class="button-container">Saving some rad stuff...</div>
+            
                         </section>
 
-                    </div>
+                </div>
+                <div v-bind:class="{emoji: expired}" class="poo1">
+                    💩
+                </div>
+                <div v-bind:class="{emoji: expired}" class="poo2">
+                    💩
+                </div>
+                <div v-bind:class="{emoji: expired}" class="poo3">
+                    💩
+                </div>
+                <div v-bind:class="{emoji: expired}" class="poo4">
+                    💩
+                </div>
+                <div v-bind:class="{emoji: expired}" class="poo5">
+                    💩
+                </div>
 
-                </v-container>
-            </v-content>
+
+            </div>           
+
         </v-app>
 
 
@@ -97,14 +120,15 @@
                 errored: false,
                 saving: false,
                 startdate: moment().add(1, 'month').format(),
-                editing: false
+                editing: false,
+                expired: false
 
             },
             methods: {
                 customFormatter(date) {
                     return moment(date).format('MMMM Do YYYY, h:mm:ss a');
                 },
-                editEvent: function(){
+                editEvent: function () {
                     this.editing = true
                 },
                 saveEvent: function () {
@@ -131,7 +155,10 @@
                             console.log(err)
                             this.errored = true
                         })
-                        .finally(() => {this.saving = false; this.editing=false;})
+                        .finally(() => {
+                            this.saving = false;
+                            this.editing = false;
+                        })
                 }
 
             },

@@ -3,7 +3,7 @@ body {
     color:#282828;
     margin: 0px;
     /* text-align: -webkit-center; */
-  text-align: center;
+  /* text-align: center; */
   /* background-color: #16C0B0;  */
 }
 
@@ -28,23 +28,24 @@ input {
     margin-bottom: 20px; */
 }
 
+
 #clockdiv {
   font-family: sans-serif;
   color: #fff;
-  display: inline-block;
+  /* display: inline-block; */
   font-weight: 100;
   text-align: center;
   font-size: 30px;
 }
 
-#clockdiv>div {
+#clockdiv > div {
   padding: 10px;
   border-radius: 3px;
   background: #00BF96;
   display: inline-block;
 }
 
-#clockdiv div>span {
+#clockdiv div > span {
   padding: 15px;
   border-radius: 3px;
   background: #00816A;
@@ -76,6 +77,29 @@ input {
   max-width: 400px;
 }
 
+.expired {
+  font-size: 5em;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.vdatetime {
+  text-align: center;
+}
+
+.button-container {
+
+  text-align: center;
+
+}
+
+.event-name-input-container {
+
+  text-align: center;
+
+}
+
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
 
@@ -86,11 +110,80 @@ input {
   #clockdiv {
 
     font-size: 14px;
+
   }
 
   .main-text {
 
-    font-size:16px;
+    font-size: 16px;
+
   }
 
+}
+
+
+/* all the poop overlay css */
+.sky {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: auto;
+  /* background: #495057; */
+  background: linear-gradient(180deg, #363497, #86b1e6);
+  background-size: 100% 100%;
+  animation: sky 50s ease infinite;
+  border-radius: 5px;
+}
+
+
+.title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  font-family: -apple-system, sans-serif;
+  font-size: 36px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+}
+
+.emoji {
+  display: block;
+  position: relative;
+  top: -10px;
+  animation: rain linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.poo1 {
+  animation-duration: 4s;
+}
+
+.poo2 {
+  animation-duration: 5s;
+}
+
+.poo3 {
+  animation-duration: 3s;
+}
+
+.poo4 {
+  animation-duration: 6s;
+}
+
+.poo5 {
+  animation-duration: 4.5s;
+}
+
+@keyframes rain {
+  from {
+    top: 0
+  }
+
+  to {
+    top: 100%
+  }
 }
