@@ -28,6 +28,9 @@ input {
     margin-bottom: 20px; */
 }
 
+.main-text {
+  text-align:center;
+}
 
 #clockdiv {
   font-family: sans-serif;
@@ -57,6 +60,12 @@ input {
   font-size: 16px;
 }
 
+.vdatetime-input {
+
+  text-align: center;
+
+}
+
 .form-control {
 
   /* display: block; */
@@ -78,7 +87,7 @@ input {
 }
 
 .expired {
-  font-size: 5em;
+  font-size: 3em;
   color: red;
   font-weight: bold;
   text-align: center;
@@ -100,26 +109,6 @@ input {
 
 }
 
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
-
-  .smalltext {
-    font-size: 8px;
-  }
-
-  #clockdiv {
-
-    font-size: 14px;
-
-  }
-
-  .main-text {
-
-    font-size: 16px;
-
-  }
-
-}
 
 
 /* all the poop overlay css */
@@ -139,16 +128,7 @@ input {
 }
 
 
-.title {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  font-family: -apple-system, sans-serif;
-  font-size: 36px;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 2px 2px rgba(0, 0, 0, .25);
-}
+
 
 .emoji {
   display: block;
@@ -160,22 +140,27 @@ input {
 
 .poo1 {
   animation-duration: 4s;
+  font-size: 2em;
 }
 
 .poo2 {
   animation-duration: 5s;
+  font-size: 2em;
 }
 
 .poo3 {
   animation-duration: 3s;
+  font-size: 2em;
 }
 
 .poo4 {
   animation-duration: 6s;
+  font-size: 2em;
 }
 
 .poo5 {
   animation-duration: 4.5s;
+  font-size: 2em;
 }
 
 @keyframes rain {
@@ -186,4 +171,57 @@ input {
   to {
     top: 100%
   }
+}
+
+.content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  font-family: -apple-system, sans-serif;
+  font-size: 36px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+  .smalltext {
+    font-size: 8px;
+  }
+
+  #clockdiv {
+
+    font-size: 14px;
+
+  }
+
+  .main-text {
+
+    font-size: 16px;
+
+  }
+
+  .expired {
+    font-size: 30px;
+   
+  }
+
+  .vdatetime-input {
+
+    font-size: 25px;
+    text-align: center;
+
+  }
+
+  .poo1
+  ,.poo2
+  ,.poo3
+  ,.poo4
+  ,.poo5
+  {
+    font-size: 1.5em;
+  }
+
 }
