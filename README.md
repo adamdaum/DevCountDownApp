@@ -1,4 +1,7 @@
 # DevCountDownApp
-A Vue single page app for use as an app service on Azure.
-Count down to event clock/timer
-Uses an Azure cloud function written in Node with Azure table storage as the api/backend to store an event and event time
+Serverless Single Page App Demo
+Hosted as an App Service on Azure
+Basic Vue/HTML single page app With a Vue component for a count down timer/clock
+Event is editable, as are the date and time to count down to
+Uses Node Azure cloud function as an API, with Azure NOSQL Table storage to store the event and time.
+

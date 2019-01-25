@@ -44,11 +44,10 @@ Vue.component('countdown-clock', {
 
             this.updateClock();
 
-            let timeinterval = setInterval(this.updateClock, 1000);
+            var timeinterval = setInterval(this.updateClock, 1000);
 
         },
         updateClock: function () {
-
 
             let t = this.getTimeRemaining(moment(this.eventtime));
 
@@ -58,7 +57,13 @@ Vue.component('countdown-clock', {
             this.seconds = ('0' + t.seconds).slice(-2);
 
               if (t.total <= 0) {
+
+                console.log("expired")
+                this.expired = true;
+                this.$emit('expired');
+
                 clearInterval(timeinterval);
+               
               }
         },
         getTimeRemaining: function (endtime) {
